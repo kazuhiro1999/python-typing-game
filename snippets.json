@@ -1,0 +1,65 @@
+{
+    "テスト": [
+        "abc",
+        "def",
+        "xyz"
+    ],
+    "python 入門": [        
+        "print(\"Hello World!\")",
+        "x = 0",
+        "name = \"Alice\"",
+        "numbers = [0, 1, 2]",        
+        "if x == 0:",    
+        "elif x < 10:",
+        "else:",
+        "for i in range(5):",
+        "while True:",
+        "# コメントです"
+    ],
+    "python 基本": [    
+        "name = input()",
+        "print(f\"Welcome {name}!\")",
+        "a = a_list[0]",
+        "for a in a_list:",      
+        "continue",
+        "break",
+        "def add(a, b):",
+        "return a + b",
+        "class MyClass:",
+        "def __init__(self):"
+    ],
+    "python 応用": [
+        "import random", 
+        "import numpy as np", 
+        "from myapp import *", 
+        "a_list = [i for i in range(5)]",
+        "dictionary = {}",
+        "yield",
+        "class SubClass(MyClass):",
+        "@staticmethod",
+        "if __name__ == '__main__':"
+    ],
+    "EV3 brick": [
+        "brick.sound.beep()"
+    ],
+    "EV3 DriveBase": [
+        "left = Motor(Port.B)",
+        "right = Motor(Port.C)",
+        "robot = DriveBase(left, right, 56, 135)",
+        "robot.drive()",
+        "robot.drive_time(100, 0, 1000)",
+        "robot.drive_time(0, 30, 3000)",
+        "robot.stop()"
+    ],
+    "EV3 Sensors": [        
+        "touch_sensor = TouchSensor(Port.S1)",
+        "color_sensor = ColorSensor(Port.S3)",
+        "ultrasonic_sensor = UltrasonicSensor(Port.S4)",
+        "if touch_sensor.is_pressed():",
+        "color = color_sensor.color()",
+        "reflection = color_sensor.reflection()",
+        "if color_sensor.color() == Color.Red:",
+        "if color_sensor.reflection() < 50:"
+    ]
+}
+  
