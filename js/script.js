@@ -6,6 +6,7 @@ const rankingBtn = document.getElementById("ranking-btn");
 const continueButton = document.getElementById("continue-button");
 const menuButton = document.getElementById("menu-button");
 const exampleText = document.getElementById("example-text");
+const descriptionText = document.getElementById("description-text");
 const userInput = document.getElementById("user-input");
 const submitButton = document.getElementById("submit-button");
 const result = document.getElementById("result");
@@ -20,22 +21,24 @@ const musicToggle = document.getElementById("music-toggle");
 const volumeSlider = document.getElementById("volume-slider");
 
 // Sound
+const clickSound = new Audio('assets/click.mp3'); 
 const keySound = new Audio('assets/key.mp3'); 
 const correctSound = new Audio('assets/correct.mp3'); 
 const incorrectSound = new Audio('assets/incorrect.mp3'); 
 const resultSound = new Audio('assets/result.mp3'); 
 const bgMusic = new Audio('assets/bgm.mp3'); 
 bgMusic.loop = true;
-bgMusic.volume = 0.3;
+bgMusic.volume = 0.0;
 bgMusic.autoplay = true;
   
 // ゲーム状態変数
-let pythonSnippets = {};
+let snippets = {};
 let currentCategory = null;
 let problems = [];
 let currentProblemIndex = 0;
 let currentProblem = null;
 let startTime = null;
+let startTimeForCurrentProblem = null;  // 各問題の開始時間
 let isMusicPlaying = true;
 let attemptsOnCurrentProblem = 0;
 const MAX_ATTEMPTS = 3;
@@ -50,7 +53,7 @@ function loadSnippets() {
   fetch('snippets.json')
     .then(response => response.json())
     .then(data => {
-      pythonSnippets = data;
+      snippets = data;
       generateButtons(); // スニペット読み込み後にボタンを生成
     })
     .catch(error => console.error('JSONファイルの読み込みエラー:', error));
@@ -59,7 +62,7 @@ function loadSnippets() {
 // カテゴリ選択ボタンを動的に生成
 function generateButtons() {
   const buttonsContainer = document.getElementById('categoryButtons');
-  const categories = Object.keys(pythonSnippets); // easy, medium, hard
+  const categories = Object.keys(snippets); // easy, medium, hard
   
   categories.forEach(category => {
     const button = document.createElement('button');
@@ -68,6 +71,8 @@ function generateButtons() {
     button.onclick = () => {
       currentCategory = category;
       startModal.style.display = 'none';
+      clickSound.currentTime = 0; 
+      clickSound.play()
       resetGame();
     };
     buttonsContainer.appendChild(button);
@@ -77,17 +82,20 @@ function generateButtons() {
 startGameBtn.addEventListener("click", () => {
   mainMenuModal.style.display = 'none';
   startModal.style.display = 'flex';
-  if (bgMusic.paused){
-    bgMusic.play();
-  }
+  clickSound.currentTime = 0; 
+  clickSound.play()
 });
   
 rankingBtn.addEventListener("click", () => {
+  clickSound.currentTime = 0; 
+  clickSound.play()
   alert("ランキング機能は近日追加予定です！");
 });
 
 continueButton.addEventListener("click", () => {
   resultModal.classList.add("hidden");
+  clickSound.currentTime = 0; 
+  clickSound.play()
   resetGame();
 });
   
@@ -96,6 +104,8 @@ menuButton.addEventListener("click", () => {
   resultModal.classList.add("hidden");
   mainMenuModal.style.display = 'flex';
   startModal.style.display = 'none';
+  clickSound.currentTime = 0; 
+  clickSound.play()
 });
 
 function getNextProblem() {
@@ -122,10 +132,12 @@ function resetGame() {
   misTypes = 0;
   keyPressCount = 0;
   startTime = Date.now();
-  problems = shuffleArray([...pythonSnippets[currentCategory]]);
+  startTimeForCurrentProblem = startTime;
+  problems = shuffleArray([...snippets[currentCategory]]);
   currentProblemIndex = 0;
   currentProblem = getNextProblem();
-  exampleText.textContent = currentProblem;
+  exampleText.textContent = currentProblem.snippet;
+  descriptionText.textContent = currentProblem.description;
   userInput.value = "";
   result.textContent = "";
   attemptsOnCurrentProblem = 0;
@@ -211,11 +223,18 @@ function resetGame() {
         
         result.textContent = "正解！🎉";
         result.style.color = "green";
+
+        // 時間を計算
+        const endTimeForCurrentProblem = Date.now();
+        const timeTakenForCurrentProblem = (endTimeForCurrentProblem - startTimeForCurrentProblem) / 1000; // 秒単位
+        console.log(`問題: ${correctText}\n問題の回答にかかった時間: ${timeTakenForCurrentProblem.toFixed(2)}秒`);
+        startTimeForCurrentProblem = Date.now();
         
         // 新しい問題に進む
         if (currentProblemIndex < problems.length) {
           currentProblem = getNextProblem();
-          exampleText.textContent = currentProblem;
+          exampleText.textContent = currentProblem.snippet;
+          descriptionText.textContent = currentProblem.description;
           userInput.value = "";
           attemptsOnCurrentProblem = 0;
         } else {
@@ -238,11 +257,14 @@ function resetGame() {
         result.style.color = "red";
         
         // 最大試行回数に達した場合
-        if (attemptsOnCurrentProblem >= MAX_ATTEMPTS) {          
+        if (attemptsOnCurrentProblem >= MAX_ATTEMPTS) {   
+          result.textContent = "";
+
           // 新しい問題に進む
           if (currentProblemIndex < problems.length) {
             currentProblem = getNextProblem();
-            exampleText.textContent = currentProblem;
+            exampleText.textContent = currentProblem.snippet;
+            descriptionText.textContent = currentProblem.description;
             userInput.value = "";
             attemptsOnCurrentProblem = 0;
           } else {

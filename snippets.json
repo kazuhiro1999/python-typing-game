@@ -1,65 +1,257 @@
 {
     "テスト": [
-        "abc",
-        "def",
-        "xyz"
+        {
+            "snippet": "print()",
+            "description": "標準出力でメッセージを表示します",
+            "time_limit": 5
+        },
+        {
+            "snippet": "input()",
+            "description": "標準入力でユーザー入力を受け付けます",
+            "time_limit": 5
+        },
+        {
+            "snippet": "# コメント",
+            "description": "コメントを記述します",
+            "time_limit": 7
+        }
     ],
     "python 入門": [        
-        "print(\"Hello World!\")",
-        "x = 0",
-        "name = \"Alice\"",
-        "numbers = [0, 1, 2]",        
-        "if x == 0:",    
-        "elif x < 10:",
-        "else:",
-        "for i in range(5):",
-        "while True:",
-        "# コメントです"
+        {
+            "snippet": "print(\"Hello World!\")",
+            "description": "文字列を出力します",
+            "time_limit": 5
+        },
+        {
+            "snippet": "x = 0",
+            "description": "変数に値を代入します",
+            "time_limit": 5
+        },
+        {
+            "snippet": "name = \"Alice\"",
+            "description": "文字列を変数に代入します",
+            "time_limit": 7
+        },
+        {
+            "snippet": "numbers = [0, 1, 2]",
+            "description": "リストを作成します",
+            "time_limit": 10
+        },
+        {
+            "snippet": "if x == 0:",
+            "description": "条件分岐",
+            "time_limit": 7
+        },
+        {
+            "snippet": "elif x < 10:",
+            "description": "条件が複数ある場合の条件分岐",
+            "time_limit": 7
+        },
+        {
+            "snippet": "else:",
+            "description": "どの条件にも一致しない場合",
+            "time_limit": 5
+        },
+        {
+            "snippet": "for i in range(5):",
+            "description": "5回繰り返すループ",
+            "time_limit": 10
+        },
+        {
+            "snippet": "while True:",
+            "description": "無限ループ",
+            "time_limit": 7
+        },
+        {
+            "snippet": "# コメントです",
+            "description": "コメントを記述します",
+            "time_limit": 7
+        }
     ],
     "python 基本": [    
-        "name = input()",
-        "print(f\"Welcome {name}!\")",
-        "a = a_list[0]",
-        "for a in a_list:",      
-        "continue",
-        "break",
-        "def add(a, b):",
-        "return a + b",
-        "class MyClass:",
-        "def __init__(self):"
+        {
+            "snippet": "name = input()",
+            "description": "ユーザーから入力を受け取ります",
+            "time_limit": 7
+        },
+        {
+            "snippet": "print(f\"Welcome {name}!\")",
+            "description": "f文字列を使用して動的な文字列を作成します",
+            "time_limit": 15
+        },
+        {
+            "snippet": "a = a_list[0]",
+            "description": "リストの最初の要素を取得します",
+            "time_limit": 7
+        },
+        {
+            "snippet": "for a in a_list:",
+            "description": "リストの要素を順番に処理します",
+            "time_limit": 10
+        },
+        {
+            "snippet": "continue",
+            "description": "現在のループをスキップして次の繰り返しに進みます",
+            "time_limit": 5
+        },
+        {
+            "snippet": "break",
+            "description": "ループを終了します",
+            "time_limit": 5
+        },
+        {
+            "snippet": "def add(a, b):",
+            "description": "関数を定義します",
+            "time_limit": 7
+        },
+        {
+            "snippet": "return a + b",
+            "description": "関数の結果を返します",
+            "time_limit": 7
+        },
+        {
+            "snippet": "class MyClass:",
+            "description": "クラスを定義します",
+            "time_limit": 7
+        },
+        {
+            "snippet": "def __init__(self):",
+            "description": "クラスの初期化メソッドを定義します",
+            "time_limit": 7
+        }
     ],
     "python 応用": [
-        "import random", 
-        "import numpy as np", 
-        "from myapp import *", 
-        "a_list = [i for i in range(5)]",
-        "dictionary = {}",
-        "yield",
-        "class SubClass(MyClass):",
-        "@staticmethod",
-        "if __name__ == '__main__':"
+        {
+            "snippet": "import random",
+            "description": "モジュール`random`をインポートします",
+            "time_limit": 10
+        },
+        {
+            "snippet": "import numpy as np",
+            "description": "`NumPy`ライブラリを`np`という名前でインポートします",
+            "time_limit": 10
+        },
+        {
+            "snippet": "from myapp import *",
+            "description": "モジュール`myapp`からすべての要素をインポートします",
+            "time_limit": 10
+        },
+        {
+            "snippet": "a_list = [i for i in range(5)]",
+            "description": "リスト内包表記で0から4までのリストを生成します",
+            "time_limit": 15
+        },
+        {
+            "snippet": "dictionary = {}",
+            "description": "空の辞書を作成します",
+            "time_limit": 10
+        },
+        {
+            "snippet": "yield",
+            "description": "ジェネレーター関数で値を返します",
+            "time_limit": 5
+        },
+        {
+            "snippet": "class SubClass(MyClass):",
+            "description": "既存のクラスを継承したサブクラスを定義します",
+            "time_limit": 10
+        },
+        {
+            "snippet": "@staticmethod",
+            "description": "クラスに属する静的メソッドを定義するためのデコレーター",
+            "time_limit": 5
+        },
+        {
+            "snippet": "if __name__ == '__main__':",
+            "description": "スクリプトが直接実行された場合のみコードを実行します",
+            "time_limit": 15
+        }
     ],
     "EV3 brick": [
-        "brick.sound.beep()"
+        {
+            "snippet": "brick.sound.beep()",
+            "description": "EV3のブロックからビープ音を鳴らします",
+            "time_limit": 10
+        }
     ],
     "EV3 DriveBase": [
-        "left = Motor(Port.B)",
-        "right = Motor(Port.C)",
-        "robot = DriveBase(left, right, 56, 135)",
-        "robot.drive()",
-        "robot.drive_time(100, 0, 1000)",
-        "robot.drive_time(0, 30, 3000)",
-        "robot.stop()"
-    ],
-    "EV3 Sensors": [        
-        "touch_sensor = TouchSensor(Port.S1)",
-        "color_sensor = ColorSensor(Port.S3)",
-        "ultrasonic_sensor = UltrasonicSensor(Port.S4)",
-        "if touch_sensor.is_pressed():",
-        "color = color_sensor.color()",
-        "reflection = color_sensor.reflection()",
-        "if color_sensor.color() == Color.Red:",
-        "if color_sensor.reflection() < 50:"
+        {
+            "snippet": "left = Motor(Port.B)",
+            "description": "ポートBに接続されたモーターを制御するためのオブジェクトを作成します",
+            "time_limit": 15
+        },
+        {
+            "snippet": "right = Motor(Port.C)",
+            "description": "ポートCに接続されたモーターを制御するためのオブジェクトを作成します",
+            "time_limit": 15
+        },
+        {
+            "snippet": "robot = DriveBase(left, right, 56, 135)",
+            "description": "左右のモーターを使ってロボットのDriveBaseを作成します",
+            "time_limit": 20
+        },
+        {
+            "snippet": "robot.drive()",
+            "description": "DriveBaseを使ってロボットを前進させます",
+            "time_limit": 10
+        },
+        {
+            "snippet": "robot.drive_time(100, 0, 1000)",
+            "description": "前進する速度100、旋回角度0、移動時間1000msでロボットを動かします",
+            "time_limit": 15
+        },
+        {
+            "snippet": "robot.drive_time(0, 30, 3000)",
+            "description": "前進する速度0、旋回角度30、移動時間3000msでロボットを動かします",
+            "time_limit": 15
+        },
+        {
+            "snippet": "robot.stop()",
+            "description": "ロボットを停止させます",
+            "time_limit": 10
+        }
+        ],
+        "EV3 Sensors": [
+        {
+            "snippet": "touch_sensor = TouchSensor(Port.S1)",
+            "description": "ポートS1に接続されたタッチセンサーを初期化します",
+            "time_limit": 15
+        },
+        {
+            "snippet": "color_sensor = ColorSensor(Port.S3)",
+            "description": "ポートS3に接続されたカラーセンサーを初期化します",
+            "time_limit": 15
+        },
+        {
+            "snippet": "ultrasonic_sensor = UltrasonicSensor(Port.S4)",
+            "description": "ポートS4に接続された超音波センサーを初期化します",
+            "time_limit": 25
+        },
+        {
+            "snippet": "if touch_sensor.is_pressed():",
+            "description": "タッチセンサーが押された場合",
+            "time_limit": 15
+        },
+        {
+            "snippet": "color = color_sensor.color()",
+            "description": "カラーセンサーから読み取った色を取得します",
+            "time_limit": 15
+        },
+        {
+            "snippet": "reflection = color_sensor.reflection()",
+            "description": "カラーセンサーから反射光の強さを取得します",
+            "time_limit": 20
+        },
+        {
+            "snippet": "if color_sensor.color() == Color.Red:",
+            "description": "カラーセンサーで読み取った色が赤かどうかを判定します",
+            "time_limit": 20
+        },
+        {
+            "snippet": "if color_sensor.reflection() < 50:",
+            "description": "カラーセンサーで反射光が50未満かどうかを判定します",
+            "time_limit": 20
+        }
     ]
 }
   
