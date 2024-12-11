@@ -1,7 +1,4 @@
 @echo off
-rem Conda環境をアクティベート
-call C:\Users\esaki\anaconda3\Scripts\activate.bat base
-
 rem ポート番号を指定（デフォルトで8000番）
 set PORT=8000
 
